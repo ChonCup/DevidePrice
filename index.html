@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Chon Devide</title>
+	<style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+</head>
+<body>
+    <h1>Devide Food Cost App</h1>
+	<div class="form">
+      <label for="PriceField">Enter Total Price that You Eat: </label>
+	  <input type="text" id="PriceField" class="PriceField"><br /><br />
+	  <label for="VatField">Enter Vat (%): </label>
+	  <input type="text" id="VatField" class="VatField"><br /><br />
+	  <label for="SCField">Enter Service Charge (%): </label>
+	  <input type="text" id="SCField" class="SCField"><br /><br />
+	  <input type="submit" value="Calulate Net Price" class="guessSubmit">
+    </div>
+	<div class="resultPrice">
+		<p class="NetPrice"></p>
+	</div>
+	<script>
+		var guessSubmit = document.querySelector('.guessSubmit');
+		var PriceField = document.querySelector('.PriceField');
+		var VatField = document.querySelector('.VatField');
+		var SCField = document.querySelector('.SCField');
+		var NetPrice = document.querySelector('.NetPrice');
+			
+		function CalPrice()
+		{	
+			var Price = Number(PriceField.value);
+			var Vat = Number(VatField.value);
+			var SC = Number(SCField.value);
+			
+			var Net = Price * (1 + Vat*0.01) * (1 + SC*0.01);
+			
+			NetPrice.textContent="Net Price is : " + Net;
+			NetPrice.style.backgroundColor = 'red';
+		}
+		
+		guessSubmit.addEventListener('click', CalPrice);
+		
+	</script>
+</body>
+</html>
